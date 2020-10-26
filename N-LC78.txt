@@ -1,0 +1,8 @@
+Permutations/排列: N!
+Combinations/组合: C^k_N = N!/[(N-k)!k!]
+Subset/子集: 2^N
+
+用二叉树
+[]-[1]-[12]
+
+深度优先搜索
