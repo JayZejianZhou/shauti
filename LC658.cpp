@@ -23,35 +23,52 @@ public:
             }
         }
         
+        //循环insert
+        int indMin=0;
+        bool flagStart=false; //start hit the begininng
+        bool flagEnd=false; //end hit the end
 
         
-        //insert the numbers
-        int insertPosStart, insertPosEnd;
-        if (start == end){
-            insertPosStart = end-round(k/2);
-            insertPosEnd = end+k/2;
-            res.insert(res.begin(), arr.begin()+insertPosStart, arr.begin()+insertPosEnd);
-        }
-        else if(arr[start] == x){
-            insertPosStart = start-round((k-1)/2);
-            insertPosEnd = start+(k-1)/2;
-            res.insert(res.begin(), arr.begin()+insertPosStart, arr.begin()+insertPosEnd);
-        }
-        else if (arr[end] == x){
-            insertPosStart = end-round((k-1)/2);
-            insertPosEnd = end+(k-1)/2;
-            res.insert(res.begin(), arr.begin()+insertPosStart, arr.begin()+insertPosEnd);
-        }
-        else{
-            if(k==1){
+        do{
+            indMin = argmin(abs(arr[start]-x), abs(arr[end]-x), start, end);
+            if(indMin==start && !flagStart){
                 res.push_back(arr[start]);
-            }else{
-                insertPosStart = start-round(k/2);
-                insertPosEnd = start+k/2;
-                res.insert(res.begin(), arr.begin()+insertPosStart, arr.begin()+insertPosEnd);
+                if(start>0){
+                    start--;
+                }
+                else{
+                   flagStart = true; 
+                }
+                
             }
-        }
+            else if(indMin == end && !flagEnd){
+                res.push_back(arr[end]);
+                if (end >= arr.size() -1){
+                    flagEnd = true;                    
+                }
+                else{
+                    end++;
+                }
+                
+            }
+            else{
+                res[0]=-1;
+                return res;
+            }
+
+        }while (res.size()<k);
+        
+        sort(res.begin(), res.end());
         return res;
     }
-
+    
+    private:
+       int argmin(int a, int b, int indA, int indB){
+           if(a>b){
+               return indB;
+           }
+           else{
+               return indA;
+           }
+     } 
 };

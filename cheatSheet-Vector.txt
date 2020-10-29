@@ -1,2 +1,27 @@
 1. 排序： std::sort (myvector.begin(), myvector.end());  
 2. 插入： res.insert(res.begin(), arr.begin()+insertPosStart, 				arr.begin()+insertPosEnd);
+3. 初始化
+//初始化一个size为0的vector
+vector<int> abc;
+//初始化size,但每个元素值为默认值
+vector<int> abc(10);    //初始化了10个默认值为0的元素
+//初始化size,并且设置初始值
+vector<int> cde(10，1);    //初始化了10个值为1的元素
+
+int a[5] = {1,2,3,4,5};
+//通过数组a的地址初始化，注意地址是从0到5（左闭右开区间）
+vector<int> b(a, a+5);
+
+vector<int> a(5,1);
+//通过a初始化
+vector<int> b(a);
+
+vector<int> a(5,1);
+int a1[5] = {2,2,2,2,2};
+vector<int> b(10);
+
+/*将a中元素全部拷贝到b开始的位置中,注意拷贝的区间为a.begin() ~ a.end()的左闭右开的区间*/
+copy(a.begin(), a.end(), b.begin());
+
+//拷贝区间也可以是数组地址构成的区间
+copy(a1, a1+5, b.begin() + 5);
