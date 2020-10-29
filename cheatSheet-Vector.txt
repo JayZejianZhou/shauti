@@ -1,0 +1,2 @@
+1. 排序： std::sort (myvector.begin(), myvector.end());  
+2. 插入： res.insert(res.begin(), arr.begin()+insertPosStart, 				arr.begin()+insertPosEnd);
