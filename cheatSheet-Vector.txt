@@ -25,3 +25,9 @@ copy(a.begin(), a.end(), b.begin());
 
 //拷贝区间也可以是数组地址构成的区间
 copy(a1, a1+5, b.begin() + 5);
+
+
+//动态添加结果数组尺寸
+if(this->res_.size()==currDepth){
+    this->res_.push_back({});
+}
