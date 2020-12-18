@@ -1,0 +1,45 @@
+使用递归解，核心思想是分成三种情况讨论
+1. 如果p q之中任何一个是root，那就返回root
+
+2. 如果root的左子树含p q，那就返回左子树
+
+3. 如果root的右子树含p q，那就返回右子树
+
+4. 如果p在左子树，q在右子树，那就返回root
+
++这样有一个问题存在，返回的是最近的子树吗？应该是的
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {    
+  
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        TreeNode* left;
+        TreeNode* right;
+        if(!root || root==p || root==q){
+            return root;
+        }
+        
+        left=lowestCommonAncestor(root->left, p, q);
+        right=lowestCommonAncestor(root->right, p, q);
+        
+        if(left && right){
+            return root;
+        }
+        
+        if(left){
+            return left;
+        }
+        else{
+            return right;
+        }
+    }
+};
