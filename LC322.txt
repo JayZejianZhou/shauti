@@ -1,0 +1,23 @@
+// 动态规划
+class Solution {
+    //https://www.cnblogs.com/grandyang/p/5138186.html
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector <int> dp(amount+1,amount+1);   // 初始化dp数组存放每种金额的最优选择
+        dp[0]=0; //当金额为0时无法选择
+        for(int i=1;i<=amount;i++){
+            for(int j=0;j<coins.size();j++){
+                if(i>=coins[j]){
+                    //每个都默认前面的i是最优的，所以只要求出来这一步的最优就好了
+                    dp[i]=min(dp[i], dp[i-coins[j]]+1); 
+                }
+            }
+        }
+        if(dp[amount]<=amount){
+            return dp[amount];
+        }
+        else{
+            return -1;
+        }
+    }
+};
