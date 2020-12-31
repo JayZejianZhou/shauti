@@ -1,0 +1,94 @@
+class Solution {
+public:
+    bool exist(vector<vector<char>>& board, string word) {
+        int m=board.size();
+        int n=board[0].size(); //get the size of the board
+        vector<vector<bool>> visited(m,vector<bool> (n));
+        int col; int row;
+        
+        //corner case, no word
+        if(word.size()==0){
+            return false;
+        }
+        
+        //先找到头
+        int i=0; int j=0;
+        for(i=0;i<m;i++){
+            for(j=0;j<n;j++){
+                if(board[i][j] == word[0]){
+                    visited[i][j]=true;
+                    if(is_next(board, visited, i, j, m, n, 1, word)){
+                        return true;
+                    }
+                    else{
+                        visited[i][j]=false; //第一个如果没找到，不应该记为visited
+                    }
+                }
+            }
+        }
+        
+        //从头往后找
+        return false;          
+    } 
+    
+    bool is_next(vector<vector<char>>& board,
+                vector<vector<bool>>& visited,
+                 int row, int col, //现在找到的这个点
+                 int m, int n, // size
+                 int pos, string words){  //the search positions in the words 
+        if(pos>=words.size()){
+            return true;
+        }
+            // 左
+            if(col-1>=0){ //别越界
+                if(board[row][col-1]==words[pos] && !visited[row][col-1]){
+                    visited[row][col-1]=true; //mark as visited
+                    if(is_next(board, visited, row, col-1, m, n, pos+1, words)){
+                        return true;
+                    }
+                    else{
+                        visited[row][col-1]=false; //不是这个词的不要标visited
+                    }
+                }
+            }
+            // 右
+            if(col+1<n){ //别越界
+                if(board[row][col+1]==words[pos] && !visited[row][col+1]){
+                    visited[row][col+1]=true; //mark as visited
+                    if(is_next(board, visited, row, col+1, m, n, pos+1, words)){
+                        return true;
+                    }
+                    else{
+                        visited[row][col+1]=false; //不是这个词的不要标visited
+                    }
+                }
+            }
+            // 上
+            if(row-1>=0){ //别越界
+                if(board[row-1][col]==words[pos] && !visited[row-1][col]){
+                    visited[row-1][col]=true; //mark as visited
+                    if(is_next(board, visited, row-1, col, m, n, pos+1, words)){
+                        return true;
+                    }
+                    else{
+                        visited[row-1][col]=false; //不是这个词的不要标visited
+                    }
+                }
+            }
+            // 下
+            if(row+1<m){ //别越界
+                if(board[row+1][col]==words[pos] && !visited[row+1][col]){
+                    visited[row+1][col]=true; //mark as visited
+                    if(is_next(board, visited, row+1, col, m, n, pos+1, words)){
+                        return true;
+                    }
+                    else{
+                        visited[row+1][col]=false; //不是这个词的不要标visited
+                    }
+                }
+            }
+        return false;
+        
+    }
+                
+};
