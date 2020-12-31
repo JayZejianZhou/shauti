@@ -1,0 +1,27 @@
+//https://beyondstars.xyz/posts/generate-parentheses-base-on-desicion-procedures/
+//重点在左括号和右括号的数目要match
+class Solution {
+public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> res;        
+        help_fun(res, n, n, "");
+        return res;
+    }
+    
+    void help_fun(vector<string>& res, int left_num, int right_num, string cur_res){
+        if(left_num>right_num){ //非常重要，任何情况下剩下的左括号数量都不能比右括号多
+            return;
+        }
+        if(left_num<=0 && right_num<=0){
+            res.push_back(cur_res);
+        }else{
+            if(left_num-1>=0){
+                help_fun(res, left_num-1, right_num, cur_res+'(');
+            }
+            if(right_num-1>=0){
+                help_fun(res, left_num, right_num-1, cur_res+')');
+            }
+        }
+        
+    }
+};
