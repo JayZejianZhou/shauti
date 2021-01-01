@@ -1,0 +1,51 @@
+//https://zhanghuimeng.github.io/post/leetcode-981-time-based-key-value-store/
+//主要难点在于选取什么样的数据结构来存储这种三个匹配的数据
+class TimeMap {
+private:    
+    map<string, vector<pair<int, string>>> m;
+public:
+    /** Initialize your data structure here. */
+    TimeMap() {
+        
+    }
+    
+    void set(string key, string value, int timestamp) {
+        m[key].emplace_back(timestamp, value);
+    }
+    
+    string get(string key, int timestamp) {
+        int i=0;
+        //corner case, no values
+        if(timestamp<m[key][0].first){
+            return "";
+        }
+        
+        
+        //二分法搜索timestamp左边的，这个已经排序了，因为规则给出每次timestamp的输入都是增长
+        int left=0; int right=m[key].size()-1; int mid=0;
+        while(i+1<m[key].size()){
+            if(abs(left-right)<=1){
+                break;
+            }
+            mid = left+(right-left)/2;            
+            if(m[key][mid].first<timestamp){
+                left=mid;
+            }
+            else if(m[key][mid].first>=timestamp){
+                right=mid-1;
+            }
+        }
+        
+        if(m[key][right].first<=timestamp){
+            return m[key][right].second;
+        }
+        return m[key][left].second;
+    }
+};
+
+/**
+ * Your TimeMap object will be instantiated and called as such:
+ * TimeMap* obj = new TimeMap();
+ * obj->set(key,value,timestamp);
+ * string param_2 = obj->get(key,timestamp);
+ */
