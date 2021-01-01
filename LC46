@@ -1,0 +1,25 @@
+class Solution {
+private:
+    vector<vector<int>> res;
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<int> temp;
+        helper(nums, temp);
+        return res;
+    }
+    void helper(vector<int>& cur_nums, vector<int> lists ){
+        if(cur_nums.size()<=0){
+            res.push_back(lists);
+            lists.clear();
+            return;
+        }        
+        for(int i=0;i<cur_nums.size();i++){
+            // int a=0;
+            lists.push_back(cur_nums[i]);
+            vector<int> temp_nums=cur_nums;
+            temp_nums.erase(temp_nums.begin()+i);
+            helper(temp_nums, lists);
+            lists.pop_back();
+        }
+    }
+};
