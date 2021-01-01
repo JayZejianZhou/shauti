@@ -1,0 +1,49 @@
+// /https://blog.csdn.net/fuxuemingzhu/article/details/79557632
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    vector< vector<int>> level_order;
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> res;  
+        
+        int level=0;
+        //level遍历
+        helper(root, 0);
+        //找到二维数组最后一个
+        for(int i=0;i<this->level_order.size();i++){
+            res.push_back(this->level_order[i][level_order[i].size()-1]);
+        }
+        
+        
+        return res;
+    }
+    
+    void helper(TreeNode* curr, int level){
+        if(!curr){
+            return;
+        }
+        //动态添加结果数组尺寸, 二维vector 先声明再使用
+        if(this->level_order.size()==level){
+            this->level_order.push_back({});
+        }
+        
+        this->level_order[level].push_back(curr->val);
+        if(curr->left){
+            helper(curr->left, level+1);
+        }
+        if(curr->right){
+            helper(curr->right, level+1);       
+        }
+    }
+};
