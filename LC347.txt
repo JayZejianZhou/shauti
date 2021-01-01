@@ -1,0 +1,25 @@
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        map<int,int> freq;
+        priority_queue <pair<int,int>> freq_sort;
+        vector<int> res;
+        for(int i=0;i<nums.size();i++){
+            if(freq.find(nums[i])==freq.end()){
+                freq[nums[i]]=1;
+            }
+            else{
+                freq[nums[i]]++;
+            }
+        }
+        for(auto it:freq){
+            freq_sort.push({it.second,it.first});//priority que 当中排序是按照第一个排的
+        }
+        for(int i=0;i<k;i++){
+            res.push_back(freq_sort.top().second);
+            freq_sort.pop();
+        }
+        return res;
+    }
+};
