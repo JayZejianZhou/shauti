@@ -1,59 +1,47 @@
 class Solution {
 public:
     vector<string> topKFrequent(vector<string>& words, int k) {
-        unordered_map<string, int> wordsCount;
-        
-        for (int i = 0; i < words.size(); i++)
-        {
-            string s = words[i];
-            wordsCount[s] += 1;
+    unordered_map<string, int> words_count; // 生成一个
+    for(auto it:words){
+        if(words_count.find(it)!=words_count.end()){
+            words_count[it]=1;
         }
-        
-        priority_queue<pair<string, int>, vector<pair<string, int>>, Compare> pqMin;
-        
-        for (pair<string, int> element : wordsCount)
-        {
-	        pqMin.emplace(element);
-            if (pqMin.size() > k)
-            {
-                pqMin.pop();
+        else{
+            words_count[it]++;
             }
-        }
-        
-        vector<string> topKresult;
-        
-        while(pqMin.size() != 0)
-        {
-            pair<string, int> element = pqMin.top();
-            topKresult.push_back(element.first);
-            pqMin.pop();
-        }
-        
-        reverse(topKresult.begin(), topKresult.end());
-        
-        return topKresult;
     }
-    
-    class Compare
-    {
-        public:
-            bool operator() (pair<string, int> p1, pair<string, int> p2)
-            {
-                if (p1.second > p2.second)
-                {
-                    return true;
-                }
-                else if (p1.second < p2.second)
-                {
-                    return false;
-                }
-                else
-                {
-                    if (p1.first < p2.first)
-                        return true;
-                    else
-                        return false;
-                }
+        
+    //插入排序，也可以不排序，用priority que压入自动排序
+    //还不如用proority queue, 自己写了个PQ  
+    vector<pair<int, string> ordered_words;
+    for(auto it=words_count.begin(); it<=words_count.end(); it++){
+        int j=0;
+        if(ordered_words.size()==0){
+            ordered_words[0].first=*(it).second;
+            ordered_words[0].second=(*it).first
+        }
+        int j=0;
+        while((*it).second<ordered_words[j].first){
+            j++;
+        }
+        if((*it).second==ordered_words[j].first){//相同频率
+            if((*it).first>ordered_words[j].second){
+                ordered_words.insert(ordered_words.begin()+j+1, {(*it).second, (*it).first});
             }
-    };
+            else{
+                ordered_words.insert(ordered_words.begin()+j, {(*it).second, (*it).first});
+            }
+        }       
+
+
+    }
+            // 返回前k个
+    vector<string> res;
+    for(int i=1;i<k;i++){
+        res.push_back(*(ordered_words.end()));
+        ordered_words.pop_back();
+    }
+    return res;
+    
+        
 };
