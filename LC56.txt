@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        bool flag_erased=false;
+        if (intervals.empty()) return {};
+       
+        sort(intervals.begin(), intervals.end());
+         vector<vector<int>> res{intervals[0]};
+        for(auto iti=intervals.begin(); iti!=intervals.end();iti++){
+            if(res.back()[1]>=(*iti)[0]) {
+                res.back()[1]=max((*iti)[1], res.back()[1]);
+                res.back()[0]=min((*iti)[0], res.back()[0]);
+            }
+            else res.push_back(*iti);
+        }
+        
+        return res;
+    }
+};
