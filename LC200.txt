@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int numIslands(vector<vector<char>>& grid) {
+        int res=0;
+        int m = grid.size(), n = grid[0].size();
+        vector<vector<bool>> visited(m, vector<bool>(n));
+        for(int i=0; i<grid.size(); i++){
+            for(int j=0; j<grid[0].size(); j++){
+                if(!visited[i][j] && grid[i][j] == '1'){
+                    helper(grid, visited, i, j);
+                    res++;
+                }
+            }
+        }        
+        return res;
+    }
+    
+    void helper(vector<vector<char>>& grid, vector<vector<bool>>& visited, int posx, int posy){
+        if(posx<0 || posy<0 || posx>=grid.size() || posy>=grid[0].size())    return;
+        //posx should be pos_row, posy should be pos_col
+        if(visited[posx][posy] || grid[posx][posy] == '0') return;
+        visited[posx][posy] = true;
+        helper(grid, visited, posx-1, posy);
+        helper(grid, visited, posx, posy-1);
+        helper(grid, visited, posx+1, posy);
+        helper(grid, visited, posx, posy+1);
+    }
+};
