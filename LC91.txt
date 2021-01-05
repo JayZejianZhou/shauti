@@ -1,6 +1,6 @@
 //动态规划，一个数组记录每一步的可能数，到最后再加起来, dp[i] = dp[i-1] + possiblity at i, 
 // 要往前算
-// o1是不行的
+// o1是不行的 https://www.cnblogs.com/grandyang/p/4313384.html
 class Solution {
 public:
     int numDecodings(string s) {
