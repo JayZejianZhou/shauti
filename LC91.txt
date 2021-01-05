@@ -1,0 +1,18 @@
+//动态规划，一个数组记录每一步的可能数，到最后再加起来, dp[i] = dp[i-1] + possiblity at i, 
+// 要往前算
+// o1是不行的
+class Solution {
+public:
+    int numDecodings(string s) {
+        vector<int> res(s.size() + 1, 0); //记录每个步骤的可能性,初始化为0
+        res[0]=1;
+        int i;
+        for(i=1;i<res.size();++i){
+            res[i]= (s[i-1]=='0') ? 0 : res[i-1]; //把一位本身的这种可能性加上去,注意，这里不可能连续两个0，所以不用担心中间全零断掉
+            if(i>1 && (s[i-2]-'0')*10 + s[i-1]-'0' <=26 && s[i-2]!='0'){ //这地方是s-2,因为你本位算了s[i],不可能再和前一个比了
+                res[i]+=res[i-2]; //要考虑加上第二位能不能组成字母，<26        
+            }
+        }
+        return res.back();
+    }
+};
