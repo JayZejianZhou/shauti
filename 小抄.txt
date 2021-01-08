@@ -3,3 +3,5 @@ vector
 	vector<vector<bool>> visited(m, vector<bool>(n));
 
 	vector<vector<bool>> visited(m, vector<bool>(n,true));
+
+unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
