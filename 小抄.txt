@@ -5,3 +5,6 @@ vector
 	vector<vector<bool>> visited(m, vector<bool>(n,true));
 
 unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
+
+去掉标*字符
+s.erase(remove(s.begin(), s.end(), '*'), s.end());
