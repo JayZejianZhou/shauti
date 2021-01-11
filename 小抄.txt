@@ -8,3 +8,5 @@ unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
 
 去掉标*字符
 s.erase(remove(s.begin(), s.end(), '*'), s.end());
+
+在map中call一个没有key的元素会被自动初始化

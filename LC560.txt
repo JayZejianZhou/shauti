@@ -1,0 +1,14 @@
+//https://www.cnblogs.com/grandyang/p/6810361.html
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        int res = 0, sum = 0, n = nums.size();
+        unordered_map<int, int> m{{0, 1}};
+        for (int i = 0; i < n; ++i) {
+            sum += nums[i];
+            res += m[sum - k]; //这个看起来很奇怪，如果没有sum-k这个item的话，就会初始化成0，创造一个表，如果有sum 等于现在的sum-k那就相当于有match了。
+            ++m[sum]; 
+        }
+        return res;
+    }
+};
