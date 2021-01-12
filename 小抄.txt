@@ -10,3 +10,6 @@ unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
 s.erase(remove(s.begin(), s.end(), '*'), s.end());
 
 在map中call一个没有key的元素会被自动初始化
+
+随机数
+v3 = rand() % 30 + 1985;
