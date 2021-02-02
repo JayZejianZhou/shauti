@@ -1,0 +1,38 @@
+//这道最小栈跟原来的栈相比就是多了一个功能，可以返回该栈的最小值。使用两个栈来实现，一个栈来按顺序存储 push 进来的数据，另一个用来存出现过的最小值。代码如下:
+class MinStack {
+private:
+    stack<int> data, history_min;
+    
+public:
+    /** initialize your data structure here. */
+    MinStack() {
+        
+    }
+    
+    void push(int x) {
+        if(history_min.empty() || history_min.top()>=x) history_min.push(x);
+        data.push(x);
+    }
+    
+    void pop() {
+        if(data.top() == history_min.top()) history_min.pop();
+        data.pop();
+    }
+    
+    int top() {
+        return data.top();
+    }
+    
+    int getMin() {
+        return history_min.top();
+    }
+};
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack* obj = new MinStack();
+ * obj->push(x);
+ * obj->pop();
+ * int param_3 = obj->top();
+ * int param_4 = obj->getMin();
+ */
