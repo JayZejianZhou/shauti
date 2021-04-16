@@ -13,3 +13,18 @@ s.erase(remove(s.begin(), s.end(), '*'), s.end());
 
 随机数
 v3 = rand() % 30 + 1985;
+
+priority queue
+#include <queue>
+//升序队列
+priority_queue <int,vector<int>,greater<int> > q;
+//降序队列
+priority_queue <int,vector<int>,less<int> >q;
+
+
+vector 求和
+#include <numeric>
+int suum=accumulate(va.begin(),va.end(),0);
+
+栈
+空栈 stack.empty()
