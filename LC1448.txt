@@ -1,0 +1,31 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    res = 0
+    resList = []
+    
+    def goodNodes(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        curM = float('-inf')
+        self.helper(root, curM)
+        return self.res
+        
+        
+    def helper(self, root, curM):
+        if root.val >= curM:
+            self.res += 1
+            self.resList.append(root.val)
+            curM = root.val
+        if root.left:
+            self.helper(root.left, curM)
+        if root.right:
+            self.helper(root.right, curM)
+
+            

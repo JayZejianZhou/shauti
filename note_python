@@ -1,0 +1,5 @@
+1. 字符串
+	翻转字符串： s[::-1]
+
+2. lambda function
+	lambda arg1,arg2,arg3… :<表达式>
