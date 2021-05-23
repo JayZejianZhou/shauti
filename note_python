@@ -3,3 +3,6 @@
 
 2. lambda function
 	lambda arg1,arg2,arg3… :<表达式>
+
+3. 最大值最小值
+	float('-inf')
