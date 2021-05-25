@@ -34,4 +34,10 @@
         # find the last occurance
         nums_fl = nums[::-1]    # flip the nums
         indr = len(a_list) -1 - nums_fl.index(key)
+
+7. 字符和数字转换
+	字符转数字
+		ord("A")
+	数字转字符
+		chr(1)
  
