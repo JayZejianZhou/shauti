@@ -6,3 +6,14 @@
 
 3. 最大值最小值
 	float('-inf')
+
+4. 字典
+	初始化：
+		domain_count = collections.defaultdict(int)
+	遍历dictionary字典
+		for key in record.keys():
+
+5. for循环
+	for i, it in enumerate(username):
+            record[it].append([timestamp[i], website[i]])
+ 
