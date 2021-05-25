@@ -13,7 +13,25 @@
 	遍历dictionary字典
 		for key in record.keys():
 
+		for key, val in row.items():
+	最大key
+		max_key = max(a_dictionary, key=a_dictionary.get)
+	最大值
+		max_value = max(a_dictionary.values())
+
 5. for循环
 	for i, it in enumerate(username):
             record[it].append([timestamp[i], website[i]])
+
+6. 列表list
+	排序：
+		sols.sort()
+	寻找元素：
+		index = mylist.index(element)
+	寻找第一和最后一次出现位置
+		# find the first occurance
+        indl = nums.index(key)
+        # find the last occurance
+        nums_fl = nums[::-1]    # flip the nums
+        indr = len(a_list) -1 - nums_fl.index(key)
  
