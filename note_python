@@ -35,9 +35,11 @@
         nums_fl = nums[::-1]    # flip the nums
         indr = len(a_list) -1 - nums_fl.index(key)
     出栈
-    	list.pop()
+    	list.pop(index)
     变回字符串
     	"".join(stack)
+    删除元素
+    	list.remove() 有重复的话只删除第一个
 
 
 7. 字符和数字转换
