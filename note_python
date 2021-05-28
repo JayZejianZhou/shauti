@@ -22,6 +22,8 @@
 5. for循环
 	for i, it in enumerate(username):
             record[it].append([timestamp[i], website[i]])
+    倒序
+		for i in range(len(list)-1, -1, -1):	# range包前不包后
 
 6. 列表list
 	排序：
