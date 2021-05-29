@@ -10,6 +10,7 @@
 4. 字典
 	初始化：
 		domain_count = collections.defaultdict(int)
+		m = {'a': 1, 'b': 2, 'c': 3, 'd': 4}
 	遍历dictionary字典
 		for key in record.keys():
 
@@ -18,10 +19,10 @@
 		max_key = max(a_dictionary, key=a_dictionary.get)
 	最大值
 		max_value = max(a_dictionary.values())
+	字典遇到自己没有的key时等于0，而list报错
 
 5. for循环
-	for i, it in enumerate(username):
-            record[it].append([timestamp[i], website[i]])
+		for count, value in enumerate(username):
     倒序
 		for i in range(len(list)-1, -1, -1):	# range包前不包后
 
@@ -42,6 +43,14 @@
     	"".join(stack)
     删除元素
     	list.remove() 有重复的话只删除第一个
+    复制
+    	list2 = list1[:]
+    固定尺寸二维数组
+    	res = [[None]*len(board[0]) for i in range(len(board))]
+    消除重复
+    	l1 = ['b','c','d','b','c','a','a']
+		l2 = {}.fromkeys(l1).keys()
+
 
 
 7. 字符和数字转换

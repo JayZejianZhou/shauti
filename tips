@@ -4,3 +4,7 @@
 2. 动态规划 dynamic programming
 	dp[i] 表示什么意思？
 	状态转移方程 dp[i] = f(dp[i-1], dp[i-2]) 是什么？
+
+3. 求次方 pow
+	基数次方： x*(x)^(n-1)
+	偶数次方： (x*x)^(n//2)
