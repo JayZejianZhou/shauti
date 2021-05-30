@@ -1,5 +1,11 @@
 1. 字符串
 	翻转字符串： s[::-1]
+	字符串边列表
+		有分隔符 str.split('.')
+		无分隔符 list = []
+				list[:0] = str
+	列表变字符串
+		"".join(s)
 
 2. lambda function
 	lambda arg1,arg2,arg3… :<表达式>
@@ -25,6 +31,9 @@
 		for count, value in enumerate(username):
     倒序
 		for i in range(len(list)-1, -1, -1):	# range包前不包后
+
+6. if else
+	一行： 'true' if True else 'false'
 
 6. 列表list
 	排序：
