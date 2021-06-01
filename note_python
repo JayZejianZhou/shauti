@@ -5,7 +5,9 @@
 		无分隔符 list = []
 				list[:0] = str
 	列表变字符串
-		"".join(s)
+		无分隔符 "".join(s)
+		有分隔符 ".".join(s)
+		要转换成字符再join output_string = ".".join( str(x) for x in data )
 
 2. lambda function
 	lambda arg1,arg2,arg3… :<表达式>
