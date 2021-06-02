@@ -1,0 +1,19 @@
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        sL = []
+        sL[:0] = s
+        tL = []
+        tL[:0] = t
+        
+        sL.sort()
+        tL.sort()
+        
+        if sL==tL:
+            return True
+        else:
+            return False
