@@ -8,6 +8,8 @@
 		无分隔符 "".join(s)
 		有分隔符 ".".join(s)
 		要转换成字符再join output_string = ".".join( str(x) for x in data )
+	除掉某个字符
+		s.replace('a', '')
 
 2. lambda function
 	lambda arg1,arg2,arg3… :<表达式>
@@ -61,6 +63,8 @@
     消除重复
     	l1 = ['b','c','d','b','c','a','a']
 		l2 = {}.fromkeys(l1).keys()
+	删除子集，不考虑顺序
+		list(set(a) - set(b))
 
 
 
