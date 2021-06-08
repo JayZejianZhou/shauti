@@ -13,7 +13,10 @@
 
 2. lambda function
 	lambda arg1,arg2,arg3… :<表达式>
-
+	lambda 函数排序字典：
+		list = sorted(dict.items(), key = lambda kv:(kv[1], kv[0]), reverse = True)
+	lambda 函数排序tuple：
+		sorted(tuple, key=lambda s: s[2]) #https://blog.csdn.net/qq_41500249/article/details/106244810
 3. 最大值最小值
 	float('-inf')
 
@@ -74,3 +77,10 @@
 	数字转字符
 		chr(1)
  
+8. 堆
+	堆排序：
+		def heapsort(iterable):
+		     h = []
+		     for value in iterable:
+		         heappush(h, value)
+		     return [heappop(h) for i in range(len(h))]
