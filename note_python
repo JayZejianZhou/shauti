@@ -68,7 +68,8 @@
 		l2 = {}.fromkeys(l1).keys()
 	删除子集，不考虑顺序
 		list(set(a) - set(b))
-
+	交集
+		list(set(a) & set(b))
 
 
 7. 字符和数字转换

@@ -1,8 +1,0 @@
-1. 求中点的时候是mid= start + (end - start) / 2;
-2. 判断条件 while(start+1<end);
-3. A[mid]与target比较的时候要判断是< = >，分开判断
-	A[mid]>target -- move end
-	A[mid]<target -- move start
-	A[mid]=target -- this is the shit, start = end = mid
-4. 最后在比较A[start] 和A[target]是不是与目标一致
-3. 初始的终点应该是end=size()-1;

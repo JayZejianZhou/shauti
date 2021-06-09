@@ -1,0 +1,35 @@
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        """
+        :type candidates: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        candidates.sort()
+        res = []
+        for it in candidates:
+            self.helper(candidates, target, res, [])
+        
+        # decode the results
+        resR = []
+        for it in res:
+            resR.append([])
+            for key, val in it.items():
+                resR[-1] += [key]*val
+            
+        return resR
+        
+    # res: 储存所有序列，tempR储存当前序列
+    def helper(self, nums, tar, res, tempR):
+        temp = tempR[:]
+        if tar in nums: 
+            # make a dictionary and save to avoid similarity
+            temp.append(tar)
+            data = collections.defaultdict(int)
+            for it in temp: data[it] += 1
+            if not data in res: res.append(data)
+        for it in nums: 
+            if tar-it >= nums[0]: 
+                self.helper(nums, tar-it, res, tempR+[it])
+        
+            
