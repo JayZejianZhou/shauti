@@ -23,6 +23,7 @@ class Solution(object):
             elif data[rains[i]]>0: return []    # 满了
             else: 
                 data[rains[i]] += 1
+                res.append(-1)
         return res
             
             
