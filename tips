@@ -11,10 +11,12 @@
 
 4. 二分法
 	求中点的时候是mid= start + (end - start) / 2;
-	判断条件 while(start<end); 再讨论start和end相邻的情况
+	判断条件 while(start<end); end-start==1
 	A[mid]与target比较的时候要判断是< = >，分开判断
 	A[mid]>target -- move end
 	A[mid]<target -- move start
 	A[mid]=target -- this is the shit, start = end = mid
 	最后在比较A[start] 和A[target]是不是与目标一致
 	初始的终点应该是end=size()-1;
+
+5. python 左移<<乘2，右移>>除2

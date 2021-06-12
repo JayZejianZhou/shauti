@@ -78,10 +78,15 @@
 	数字转字符
 		chr(1)
  
-8. 堆
+8. 堆，优先队列
 	堆排序：
 		def heapsort(iterable):
 		     h = []
 		     for value in iterable:
 		         heappush(h, value)
 		     return [heappop(h) for i in range(len(h))]
+	列表到堆
+		heapq.heapify(ls)
+	自定义比较元素
+		def __cmp__(self, other):
+    		return cmp(self.intAttribute, other.intAttribute)
