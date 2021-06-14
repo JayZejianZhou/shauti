@@ -10,6 +10,7 @@
 		要转换成字符再join output_string = ".".join( str(x) for x in data )
 	除掉某个字符
 		s.replace('a', '')
+	是不是全是字母： string.isalpha()
 
 2. lambda function
 	lambda arg1,arg2,arg3… :<表达式>
@@ -59,6 +60,9 @@
     	"".join(stack)
     删除元素
     	list.remove() 有重复的话只删除第一个
+    	list[:-k]	删除末尾k个元素
+    	list.lstrip("k")	删除有效字符串左边的“k”
+
     复制
     	list2 = list1[:]
     固定尺寸二维数组
